@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>lista de compras</title>
+    <meta charset="utf-8">
+</head>
+
+<body>
+
+
+
+    <div style="width: 300px; margin: 0 auto;">
+        <button onclick="adicionarItem()"> Adicionar item</button><br />
+        <label>Item
+            <input type="text" name="item" id="item"></label><br />
+        <label>Quantidade
+            <input type="text" name="quantidades" id="quantidade"></label><br />
+        <label>Preço
+            <input type="text" name="preco" id="preco"><br />
+        </label>
+        <label>Medida
+            <input type="text" name="medida" id="medida">
+        </label>
+        <input type="text" name="email" id="email">
+        <button onclick="adicionarEmail()">Adicionar email</button>
+        <button onclick="calcular()">calcular</button>
+        
+    </div>
+    <div id="result">
+
+    </div>
+
+
+    <script>
+
+        let emails = []
+        let itens = []
+        let quantidades = []
+        let precos = []
+        let medidas = []
+        let total = 0;
+        let subtotal = 0;
+
+        function adicionarEmail() {
+            let email = document.getElementById('email').value;
+            emails.push(email);
+        }
+
+        function adicionarItem() {
+            let item = document.getElementById('item').value
+            let quantidade = document.getElementById('quantidade').value
+            let preco = document.getElementById('preco').value
+            let medida = document.getElementById('medida').value
+            itens.push(item);
+            quantidades.push(quantidade);
+            precos.push(preco);
+            medidas.push(medida);
+            console.log(itens, quantidades, precos, medidas);
+        }
+
+        function calcular() {
+            const h4 = document.createElement('h4');
+            const result = document.getElementById('result')
+            
+
+            for (let i = 0; i < quantidades.length; i++) {
+                subtotal = parseInt(quantidades[i]) * parseInt(precos[i]);
+                total += subtotal;
+                h4.innerHTML = total;
+                result.appendChild(h4);
+            }
+            
+            let valordadivisao = total / emails.length
+
+
+             for (let i = 0; i < emails.length; i++) {
+
+                 console.log(emails[i] + "->" + valordadivisao)
+            }
+
+
+        }
+
+            
+
+
+
+
+    </script>
+</body>
+
+</html>
